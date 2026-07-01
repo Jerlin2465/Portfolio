@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jerlin S — MERN Stack Developer</title>
+    <link rel="icon" type="image/png" href="./assets/j.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,7 +12,6 @@
       rel="stylesheet"
     />
     <style>
-      /* ── RESET & ROOT ────────────────────────────────────────────────── */
       *,
       *::before,
       *::after {
@@ -60,8 +60,6 @@
         background: var(--primary-light);
         border-radius: 3px;
       }
-
-      /* ── ANIMATIONS ──────────────────────────────────────────────────── */
       @keyframes fadeUp {
         from {
           opacity: 0;
@@ -106,7 +104,6 @@
           transform: rotate(360deg);
         }
       }
-
       .reveal {
         opacity: 0;
         transform: translateY(28px);
@@ -118,16 +115,12 @@
         opacity: 1;
         transform: none;
       }
-
-      /* ── GRAD TEXT ───────────────────────────────────────────────────── */
       .grad-text {
         background: linear-gradient(135deg, var(--primary), var(--accent));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
-
-      /* ── APPBAR ──────────────────────────────────────────────────────── */
       header {
         position: fixed;
         top: 0;
@@ -188,8 +181,84 @@
         transition: all 0.22s;
         font-family: var(--mono);
       }
-
-      /* ── HERO ────────────────────────────────────────────────────────── */
+      .hamburger-btn {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 38px;
+        height: 38px;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 8px;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+      .hamburger-btn span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        background: #fff;
+        border-radius: 2px;
+        transition: all 0.25s ease;
+      }
+      .hamburger-btn.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger-btn.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger-btn.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+      .mobile-dropdown {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        z-index: 998;
+        background: var(--primary-dark);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.32s ease;
+        display: none;
+      }
+      .mobile-dropdown.open {
+        max-height: 420px;
+      }
+      .mobile-dropdown-inner {
+        display: flex;
+        flex-direction: column;
+        padding: 8px 20px 20px;
+      }
+      .mobile-link {
+        padding: 14px 6px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.85);
+        font-family: var(--mono);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .mobile-link:active {
+        color: #fff;
+      }
+      .mobile-hire-btn {
+        margin-top: 14px;
+        text-align: center;
+        padding: 12px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: #fff;
+        color: var(--primary);
+        border-radius: 8px;
+        font-family: var(--mono);
+      }
       #hero {
         min-height: 100vh;
         background: linear-gradient(
@@ -288,6 +357,7 @@
         gap: 12px;
         flex-wrap: wrap;
         animation: fadeUp 0.6s 0.7s both;
+        padding: 10px;
       }
       .btn-primary {
         padding: 12px 28px;
@@ -345,8 +415,6 @@
         margin-top: 5px;
         font-family: var(--mono);
       }
-
-      /* ── SECTION ─────────────────────────────────────────────────────── */
       section.sec {
         padding: 80px 48px;
         background: var(--bg);
@@ -358,8 +426,6 @@
         max-width: 1100px;
         margin: 0 auto;
       }
-
-      /* ── SECTION HEADER ──────────────────────────────────────────────── */
       .sec-overline {
         font-size: 0.62rem;
         font-weight: 600;
@@ -385,8 +451,6 @@
       .sec-header {
         margin-bottom: 48px;
       }
-
-      /* ── ABOUT ───────────────────────────────────────────────────────── */
       .about-grid {
         display: grid;
         grid-template-columns: 1.2fr 1fr;
@@ -444,16 +508,12 @@
         color: var(--text-sec);
         margin-top: 3px;
       }
-
-      /* ── SKILLS ──────────────────────────────────────────────────────── */
       .skills-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 20px;
       }
-
       .skill-card {
-        /* background: var(--surface); */
         border-radius: 14px;
         padding: 24px 26px;
         box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
@@ -465,7 +525,6 @@
         position: relative;
         overflow: hidden;
       }
-
       .skill-card::before {
         content: "";
         position: absolute;
@@ -474,44 +533,34 @@
         width: 100%;
         height: 4px;
       }
-
       .skill-card:hover {
         transform: translateY(-6px);
         box-shadow: 0 16px 32px rgba(0, 0, 0, 0.14);
       }
-
       .skill-card:nth-child(1) {
         border-left-color: #1565c0;
       }
-
       .skill-card:nth-child(2) {
         border-left-color: #0288d1;
       }
-
       .skill-card:nth-child(3) {
         border-left-color: #00897b;
       }
-
       .skill-card:nth-child(4) {
         border-left-color: #e65100;
       }
-
       .skill-card:nth-child(5) {
         border-left-color: #7b1fa2;
       }
-
       .skill-card.full {
         grid-column: 1/-1;
       }
-
-      /* HEADER */
       .skill-card-header {
         display: flex;
         align-items: center;
         gap: 12px;
         margin-bottom: 18px;
       }
-
       .skill-card-title {
         font-size: 0.8rem;
         font-weight: 800;
@@ -520,14 +569,11 @@
         font-family: var(--mono);
         color: var(--text);
       }
-
-      /* CHIPS */
       .chips {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
       }
-
       .chip {
         padding: 7px 15px;
         font-size: 0.72rem;
@@ -538,72 +584,57 @@
         cursor: default;
         font-family: var(--mono);
       }
-
-      /* FRONTEND */
       .chip-c1 {
         background: #e3f2fd;
         color: #1565c0;
         border: 1px solid #bbdefb;
       }
-
       .chip-c1:hover {
         background: #1565c0;
         color: #fff;
         transform: translateY(-3px);
         box-shadow: 0 6px 14px rgba(21, 101, 192, 0.35);
       }
-
-      /* BACKEND */
       .chip-c2 {
         background: #e1f5fe;
         color: #0277bd;
         border: 1px solid #b3e5fc;
       }
-
       .chip-c2:hover {
         background: #0277bd;
         color: #fff;
         transform: translateY(-3px);
       }
-
-      /* DATABASE */
       .chip-c3 {
         background: #e0f2f1;
         color: #00695c;
         border: 1px solid #b2dfdb;
       }
-
       .chip-c3:hover {
         background: #00695c;
         color: #fff;
         transform: translateY(-3px);
       }
-
       .chip-c4 {
         background: #f3e5f5;
         color: #6a1b9a;
         border: 1px solid #e1bee7;
       }
-
       .chip-c4:hover {
         background: #6a1b9a;
         color: #fff;
         transform: translateY(-3px);
       }
-
       .chip-c5 {
         background: #fff3e0;
         color: #e65100;
         border: 1px solid #ffccbc;
       }
-
       .chip-c5:hover {
         background: #e65100;
         color: #fff;
         transform: translateY(-3px);
       }
-
-      /* ── EXPERIENCE ──────────────────────────────────────────────────── */
       .exp-list {
         display: flex;
         flex-direction: column;
@@ -657,8 +688,6 @@
         color: var(--text-sec);
         line-height: 1.7;
       }
-
-      /* ── PROJECTS ────────────────────────────────────────────────────── */
       .proj-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -791,8 +820,6 @@
         transition: all 0.2s;
         font-family: var(--sans);
       }
-
-      /* ── EDUCATION ───────────────────────────────────────────────────── */
       .edu-list {
         display: flex;
         flex-direction: column;
@@ -837,8 +864,6 @@
         margin-top: 2px;
         font-family: var(--mono);
       }
-
-      /* ── CONTACT ─────────────────────────────────────────────────────── */
       .contact-grid {
         display: grid;
         grid-template-columns: 1fr 1.1fr;
@@ -965,8 +990,6 @@
       .btn-submit.sent {
         background: #00897b;
       }
-
-      /* ── FOOTER ──────────────────────────────────────────────────────── */
       footer {
         padding: 32px 48px;
         background: var(--primary-dark);
@@ -976,8 +999,6 @@
         font-family: var(--mono);
         letter-spacing: 0.06em;
       }
-
-      /* ── BUTTON UTIL ─────────────────────────────────────────────────── */
       .btn-linkedin {
         padding: 10px 20px;
         font-size: 0.75rem;
@@ -1004,25 +1025,120 @@
         transition: all 0.22s;
         font-family: var(--mono);
       }
+      @media (max-width: 900px) {
+        header {
+          padding: 0 24px;
+        }
+        nav {
+          display: none;
+        }
+        .hire-btn {
+          display: none;
+        }
+        .hamburger-btn {
+          display: flex;
+        }
+        .mobile-dropdown {
+          display: block;
+        }
+        #hero {
+          padding: 90px 24px 50px;
+        }
+        .hero-inner {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+        .stat-card {
+          min-width: 0;
+          width: 100%;
+        }
+        section.sec {
+          padding: 56px 22px;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .info-cards {
+          grid-template-columns: 1fr 1fr;
+        }
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+        .exp-card {
+          padding: 22px 20px;
+        }
+        .proj-grid {
+          grid-template-columns: 1fr;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+        .edu-card {
+          flex-wrap: wrap;
+        }
+      }
+      @media (max-width: 480px) {
+        .hero-title {
+          font-size: 2.4rem;
+        }
+        .info-cards {
+          grid-template-columns: 1fr;
+        }
+        .hero-btns {
+          flex-direction: column;
+        }
+        .hero-btns a {
+          text-align: center;
+        }
+        .about-links {
+          flex-direction: column;
+        }
+        .about-links a {
+          text-align: center;
+        }
+      }
+      .img-1 {
+        object-fit: cover;
+      }
     </style>
   </head>
   <body>
-    <!-- ── APPBAR ──────────────────────────────────────────────────────── -->
     <header id="appbar">
       <div class="logo">Jerlin</div>
       <nav>
+        <a href="#projects" class="nav-link">Projects</a>
         <a href="#about" class="nav-link">About</a>
         <a href="#skills" class="nav-link">Skills</a>
         <a href="#experience" class="nav-link">Experience</a>
-        <a href="#projects" class="nav-link">Projects</a>
         <a href="#contact" class="nav-link">Contact</a>
       </nav>
       <a href="#contact" class="hire-btn">Hire Me</a>
+      <button
+        class="hamburger-btn"
+        id="hamburgerBtn"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </header>
 
-    <!-- ── HERO ───────────────────────────────────────────────────────── -->
+    <div class="mobile-dropdown" id="mobileDropdown">
+      <div class="mobile-dropdown-inner">
+        <a href="#projects" class="mobile-link">Projects</a>
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#skills" class="mobile-link">Skills</a>
+        <a href="#experience" class="mobile-link">Experience</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+        <a href="#contact" class="mobile-hire-btn">Hire Me</a>
+      </div>
+    </div>
+
     <section id="hero">
-      <!-- decorative circles -->
       <div
         class="hero-circle"
         style="
@@ -1089,14 +1205,14 @@
           <div class="hero-btns">
             <a href="#projects" class="btn-primary">View Projects</a>
             <a href="./assets/Jerlin_Resume.docx" download class="btn-outline"
-              >Download CV</a
-            >
+              >Download CV
+            </a>
           </div>
         </div>
 
         <div class="stat-card">
           <div class="stat-item">
-            <div class="stat-num">3 +</div>
+            <div class="stat-num">4 +</div>
             <div class="stat-label">Projects Built</div>
           </div>
           <div class="stat-item">
@@ -1104,8 +1220,8 @@
             <div class="stat-label">Tech Skills</div>
           </div>
           <div class="stat-item">
-            <div class="stat-num">1 Mon+</div>
-            <div class="stat-label">Internship Curr</div>
+            <div class="stat-num">3 Mon</div>
+            <div class="stat-label">Internship</div>
           </div>
           <div class="stat-item">
             <div class="stat-num">2025</div>
@@ -1115,8 +1231,7 @@
       </div>
     </section>
 
-    <!-- ── ABOUT ──────────────────────────────────────────────────────── -->
-    <section id="about" class="sec surface">
+    <section id="about" class="sec">
       <div class="inner">
         <div class="sec-header reveal">
           <div class="sec-overline">About Me</div>
@@ -1134,7 +1249,7 @@
             </p>
             <p>
               I gained hands-on industry experience through a
-              <strong>1-month internship at Palette Production</strong>, where I
+              <strong>3-month internship at Palette Production</strong>, where I
               developed UI components, practiced Git workflows, and collaborated
               in agile-style team reviews.
             </p>
@@ -1180,12 +1295,12 @@
             <div class="info-card" style="border-left: 4px solid var(--teal)">
               <div class="info-card-label">Experience</div>
               <div class="info-card-val">Intern @ Palette Production</div>
-              <div class="info-card-sub">1 Month & current</div>
+              <div class="info-card-sub">3 Months</div>
             </div>
             <div class="info-card" style="border-left: 4px solid var(--purple)">
               <div class="info-card-label">Status</div>
               <div class="info-card-val">Open to Opportunities</div>
-              <div class="info-card-sub">Full-time · Internship · Remote</div>
+              <div class="info-card-sub">Full-time</div>
             </div>
             <div class="info-card" style="border-left: 4px solid var(--orange)">
               <div class="info-card-label">Location</div>
@@ -1201,8 +1316,7 @@
       </div>
     </section>
 
-    <!-- ── SKILLS ─────────────────────────────────────────────────────── -->
-    <section id="skills" class="sec">
+    <section id="skills" class="sec surface">
       <div class="inner">
         <div class="sec-header reveal">
           <div class="sec-overline">Expertise</div>
@@ -1272,8 +1386,7 @@
       </div>
     </section>
 
-    <!-- ── EXPERIENCE ─────────────────────────────────────────────────── -->
-    <section id="experience" class="sec surface">
+    <section id="experience" class="sec">
       <div class="inner">
         <div class="sec-header reveal">
           <div class="sec-overline">Work</div>
@@ -1292,7 +1405,7 @@
                 </div>
               </div>
               <div style="text-align: right">
-                <div class="exp-period">current</div>
+                <div class="exp-period">3-Month Internship</div>
               </div>
             </div>
             <ul class="exp-points">
@@ -1353,9 +1466,7 @@
         </div>
       </div>
     </section>
-
-    <!-- ── PROJECTS ───────────────────────────────────────────────────── -->
-    <section id="projects" class="sec">
+    <section id="projects" class="sec surface">
       <div class="inner">
         <div class="sec-header reveal">
           <div class="sec-overline">Work</div>
@@ -1365,7 +1476,60 @@
           <div class="sec-bar"></div>
         </div>
         <div class="proj-grid reveal">
-          <!-- Project 1 -->
+          <div class="proj-card">
+            <div
+              class="proj-thumb"
+              style="
+                background: linear-gradient(135deg, #3e2723, #6d4c41, #d84315);
+              "
+            >
+              <div class="proj-img-inner">
+                <img
+                  src="./assets/Jerry.jpg"
+                  alt="Jerry's Restaurant website homepage"
+                  width="100%"
+                  height="100%"
+                  class="img-1"
+                />
+              </div>
+              <div class="proj-badge">Restaurant</div>
+              <div class="proj-num">01 / 04</div>
+            </div>
+            <div class="proj-body">
+              <div class="proj-title">
+                Jerry's Restaurant — Dining Experience
+              </div>
+              <p class="proj-desc">
+                Responsive restaurant website featuring a digital menu, online
+                table reservations, and a gallery showcase. Built with modern
+                front-end practices for a smooth, mobile-friendly browsing
+                experience.
+              </p>
+              <div class="proj-chips">
+                <span class="proj-chip">HTML5</span
+                ><span class="proj-chip">CSS3</span
+                ><span class="proj-chip">JavaScript</span
+                ><span class="proj-chip">React.js</span
+                ><span class="proj-chip">Responsive Design</span>
+              </div>
+              <div class="proj-divider"></div>
+              <div class="proj-links">
+                <a
+                  href="https://jerry-restaurant.vercel.app"
+                  target="_blank"
+                  class="btn-sm-primary"
+                  >Live Demo</a
+                >
+                <a
+                  href="https://github.com/Jerlin2465/Restaurant"
+                  target="_blank"
+                  class="btn-sm-outline"
+                  >GitHub</a
+                >
+              </div>
+            </div>
+          </div>
+
           <div class="proj-card">
             <div
               class="proj-thumb"
@@ -1376,15 +1540,13 @@
               <div class="proj-img-inner">
                 <img
                   src="./assets/dress.jpg"
-                  alt="image"
+                  alt="Black Pearl fashion store homepage"
                   width="100%"
-                  ;
                   height="100%"
-                  ;
                 />
               </div>
               <div class="proj-badge">E-Commerce</div>
-              <div class="proj-num">01 / 03</div>
+              <div class="proj-num">02 / 04</div>
             </div>
             <div class="proj-body">
               <div class="proj-title">Black Pearl — Fashion Store</div>
@@ -1410,7 +1572,7 @@
                   >Live Demo</a
                 >
                 <a
-                  href="https://github.com/Jerlin2465/"
+                  href="https://github.com/Jerlin2465/Clothing-E-com"
                   target="_blank"
                   class="btn-sm-outline"
                   >GitHub</a
@@ -1419,7 +1581,6 @@
             </div>
           </div>
 
-          <!-- Project 2 -->
           <div class="proj-card">
             <div
               class="proj-thumb"
@@ -1430,13 +1591,13 @@
               <div class="proj-img-inner">
                 <img
                   src="./assets/weather.avif"
-                  alt="image"
+                  alt="Weather Forecast App interface"
                   height="100%"
                   width="100%"
                 />
               </div>
               <div class="proj-badge">Weather App</div>
-              <div class="proj-num">02 / 03</div>
+              <div class="proj-num">03 / 04</div>
             </div>
             <div class="proj-body">
               <div class="proj-title">Weather Forecast App</div>
@@ -1470,7 +1631,6 @@
             </div>
           </div>
 
-          <!-- Project 3 -->
           <div class="proj-card">
             <div
               class="proj-thumb"
@@ -1481,13 +1641,13 @@
               <div class="proj-img-inner">
                 <img
                   src="./assets/todo.avif"
-                  alt="image"
+                  alt="Daily Todo Task Manager interface"
                   height="100%"
                   width="100%"
                 />
               </div>
               <div class="proj-badge">Productivity</div>
-              <div class="proj-num">03 / 03</div>
+              <div class="proj-num">04 / 04</div>
             </div>
             <div class="proj-body">
               <div class="proj-title">Daily Todo Task Manager</div>
@@ -1518,8 +1678,6 @@
         </div>
       </div>
     </section>
-
-    <!-- ── EDUCATION ──────────────────────────────────────────────────── -->
     <section id="education" class="sec surface">
       <div class="inner">
         <div class="sec-header reveal">
@@ -1570,7 +1728,6 @@
       </div>
     </section>
 
-    <!-- ── CONTACT ────────────────────────────────────────────────────── -->
     <section id="contact" class="sec">
       <div class="inner">
         <div class="sec-header reveal">
@@ -1667,15 +1824,15 @@
       </div>
     </section>
 
+    <footer>© 2026 Copyright— Develpoed By Jerlin</footer>
+
     <script>
-      // ── Appbar scroll ────────────────────────────────────────────────────
       window.addEventListener("scroll", () => {
         document
           .getElementById("appbar")
           .classList.toggle("scrolled", window.scrollY > 20);
       });
 
-      // ── Reveal on scroll ────────────────────────────────────────────────
       const obs = new IntersectionObserver(
         (entries) => {
           entries.forEach((e) => {
@@ -1689,7 +1846,6 @@
       );
       document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
 
-      // ── Send button ──────────────────────────────────────────────────────
       document.getElementById("sendBtn").addEventListener("click", function () {
         this.textContent = "✓ Message Sent!";
         this.classList.add("sent");
@@ -1697,6 +1853,33 @@
           this.textContent = "Send Message";
           this.classList.remove("sent");
         }, 3000);
+      });
+
+      const hamburgerBtn = document.getElementById("hamburgerBtn");
+      const mobileDropdown = document.getElementById("mobileDropdown");
+
+      function closeMobileMenu() {
+        hamburgerBtn.classList.remove("open");
+        hamburgerBtn.setAttribute("aria-expanded", "false");
+        mobileDropdown.classList.remove("open");
+      }
+
+      hamburgerBtn.addEventListener("click", () => {
+        const isOpen = hamburgerBtn.classList.toggle("open");
+        hamburgerBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        mobileDropdown.classList.toggle("open", isOpen);
+      });
+
+      document
+        .querySelectorAll(".mobile-link, .mobile-hire-btn")
+        .forEach((el) => {
+          el.addEventListener("click", closeMobileMenu);
+        });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 900) {
+          closeMobileMenu();
+        }
       });
     </script>
   </body>
